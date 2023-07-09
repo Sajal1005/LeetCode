@@ -62,14 +62,14 @@ class MyStack
     //Function to remove an item from top of the stack.
     int pop() 
     {
+        // Add your code here
         if(top==null){
             return -1;
         }
-        int value=top.data;
-        // Add your code here
-        StackNode temp = top.next;
-        top.next=null;
-        top=temp;
-        return value;
+        int val = top.data;
+    StackNode temp=top;
+    top=top.next;
+    temp.next=null;
+    return val;
     }
 }
