@@ -52,20 +52,25 @@ class Solution {
             i++;j--;
         }
     }
-    void reversegroup(ArrayList<Integer> arr, int n, int k,int count){
-        if(count>=n){
-            return;
-        }
-        reverse(arr,count,count+k-1);
-        count =count+k;
-        if(count<n){
-            reversegroup(arr,n,k,count);
-        }
-        return;
-    }
+    // void reversegroup(ArrayList<Integer> arr, int n, int k,int count){
+    //     if(count>=n){
+    //         return;
+    //     }
+    //     reverse(arr,count,count+k-1);
+    //     count =count+k;
+    //     if(count<n){
+    //         reversegroup(arr,n,k,count);
+    //     }
+    //     return;
+    // }
     //Function to reverse every sub-array group of size k.
     void reverseInGroups(ArrayList<Integer> arr, int n, int k) {
         // code here
-        reversegroup(arr,n,k,0);
+        int count=0;
+        while(count<n){
+            reverse(arr,count,count+k-1);
+            count+=k;
+        }
+        
     }
 }
