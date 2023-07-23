@@ -87,8 +87,7 @@ class Solution
         Node count0 = new Node(-1);
         Node count1 = new Node(-1);
         Node count2 = new Node(-1);
-        Node c0=count0,c1=count1,c2=count2;
-        Node temp=head;
+        Node c0=count0,c1=count1,c2=count2,temp=head;
         while(temp!=null){
             if(temp.data==0){
                 c0.next=temp;
@@ -104,7 +103,7 @@ class Solution
                 c2=c2.next;
             }
         }
-        if(count1.next==null){
+        if(c1==count1){
             c0.next=count2.next;
             c2.next=null;
         }else{
