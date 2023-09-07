@@ -120,19 +120,16 @@ class Solution
                 break;
             }
         }
-        if(flag==1){
-            if(slow==head){
-                while(fast.next!=slow){
-                    fast=fast.next;
-                }
-            }else{
-                slow=head;
-                while(slow.next!=fast.next){
-                    slow=slow.next;
-                    fast=fast.next;
-                }
+        if(flag==0) return;
+        if(slow==head){
+            while(fast.next!=slow) fast=fast.next;
+        }else{
+            slow=head;
+            while(fast.next!=slow.next){
+                fast=fast.next;
+                slow=slow.next;
             }
-            fast.next=null;
         }
+        fast.next=null;
     }
 }
