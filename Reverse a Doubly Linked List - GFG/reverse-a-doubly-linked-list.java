@@ -90,11 +90,11 @@ class Node
 public static Node reverseDLL(Node  head)
 {
     //Your code here
-    Node curr=head,temp=null,prev=null;
+    Node curr=head,prev=null,temp=null;
     while(curr!=null){
         temp=curr.next;
-        curr.next=prev;
         curr.prev=temp;
+        curr.next=prev;
         prev=curr;
         curr=temp;
     }
