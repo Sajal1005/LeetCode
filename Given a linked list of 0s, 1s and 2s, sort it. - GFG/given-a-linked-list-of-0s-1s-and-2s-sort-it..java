@@ -84,34 +84,33 @@ class Solution
     static Node segregate(Node head)
     {
         // add your code here
-        Node count0 = new Node(-1);
-        Node count1 = new Node(-1);
-        Node count2 = new Node(-1);
-        Node c0=count0,c1=count1,c2=count2,temp=head;
+        Node list0 = new Node(0),list1=new Node(1),list2=new Node(2);
+        Node l0=list0,l1=list1,l2=list2;
+        Node temp=head;
         while(temp!=null){
             if(temp.data==0){
-                c0.next=temp;
+                l0.next=temp;
                 temp=temp.next;
-                c0=c0.next;
+                l0=l0.next;
             }else if(temp.data==1){
-                c1.next=temp;
+                l1.next=temp;
                 temp=temp.next;
-                c1=c1.next;
-            }else{
-                c2.next=temp;
+                l1=l1.next;
+            }else if(temp.data==2){
+                l2.next=temp;
                 temp=temp.next;
-                c2=c2.next;
+                l2=l2.next;
             }
         }
-        if(c1==count1){
-            c0.next=count2.next;
-            c2.next=null;
+        if(l1==list1){
+            l0.next=list2.next;
         }else{
-            c0.next=count1.next;
-            c1.next=count2.next;
-            c2.next=null;
+            l0.next=list1.next;
+            l1.next=list2.next;
         }
-        return count0.next;
+        l2.next=null;
+        return list0.next;
+        
     }
 }
 
