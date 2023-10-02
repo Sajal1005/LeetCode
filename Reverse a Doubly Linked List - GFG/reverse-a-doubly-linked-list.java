@@ -93,8 +93,8 @@ public static Node reverseDLL(Node  head)
     Node curr=head,prev=null,temp=null;
     while(curr!=null){
         temp=curr.next;
-        curr.prev=temp;
         curr.next=prev;
+        curr.prev=temp;
         prev=curr;
         curr=temp;
     }
