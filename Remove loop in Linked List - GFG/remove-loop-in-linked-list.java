@@ -122,12 +122,14 @@ class Solution
         }
         if(flag==0) return;
         if(slow==head){
-            while(fast.next!=slow) fast=fast.next;
+            while(fast.next!=slow){
+                fast=fast.next;
+            }
         }else{
             slow=head;
             while(fast.next!=slow.next){
-                fast=fast.next;
                 slow=slow.next;
+                fast=fast.next;
             }
         }
         fast.next=null;
