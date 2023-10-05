@@ -45,30 +45,23 @@ class GFG
 
 class Solution
 { 
-    static void addAtBottom(Stack<Integer> s, int x){
-        if(s.empty()){
-            s.push(x);
-            return;
+    public static void add(Stack<Integer> s,int n){
+        if(s.isEmpty()){
+            s.push(n);
+            return ;
         }
-        
-        int ele = s.pop();
-        
-        addAtBottom(s,x);
-        
-        s.push(ele);
+        int num=s.pop();
+        add(s,n);
+        s.push(num);
     }
     static void reverse(Stack<Integer> s)
     {
         // add your code here
-        if(s.empty()){
+        if(s.isEmpty()){
             return;
         }
-        
-        int ele = s.pop();
-        
+        int num = s.pop();
         reverse(s);
-        
-        addAtBottom(s,ele);
-        
+        add(s,num);
     }
 }
