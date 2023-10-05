@@ -30,29 +30,20 @@ class Sol
 {
     int countRev (String str)
     {
-        // your code here 
-        if(str.length()%2!=0){
-            return -1;
-        }
+        // your code here     
+        if(str.length()%2!=0) return -1;
         Stack<Character> s = new Stack<>();
         for(int i=0;i<str.length();i++){
-            if(s.empty()){
-                s.push(str.charAt(i));
-            }else if((s.peek()=='{' && str.charAt(i)=='}')){
-                s.pop();
-            }else{
-                s.push(str.charAt(i));
-            }
+            if(s.isEmpty()) s.push(str.charAt(i));
+            else if(s.peek()=='{' && str.charAt(i)=='}') s.pop();
+            else s.push(str.charAt(i));
         }
         int a=0,b=0;
         while(!s.empty()){
-            if(s.peek()=='{'){
-                a++;
-            }else if(s.peek()=='}'){
-                b++;
-            }
+            if(s.peek()=='{') a++;
+            else b++;
             s.pop();
         }
-        return ((a+1)/2) + ((b+1)/2);
+        return (a+1)/2 + (b+1)/2;
     }
 }
