@@ -21,44 +21,36 @@ class GFG {
 class Solution {
     // Function to convert an infix expression to a postfix expression.
     public static int prec(char c){
-        switch(c){
-            case '+':
-            case '-':
-                return 1;
-            case '*':
-            case '/':
-                return 2;
-            case '^':
-                return 3;
-            
-        }
+        if(c=='^') return 3;
+        else if(c=='*' || c=='/') return 2;
+        else if(c=='+' || c=='-') return 1;
         return -1;
     }
-    public static String infixToPostfix(String s) {
+    public static String infixToPostfix(String str) {
         // Your code here
-        String res="";
-        Stack<Character> stack = new Stack<>();
-        for(int i=0;i<s.length();i++){
-            char c = s.charAt(i);
+        String ans="";
+        Stack<Character> s = new Stack<>();
+        for(int i=0;i<str.length();i++){
+            char c = str.charAt(i);
             if(Character.isLetterOrDigit(c)){
-                res+=c;
+                ans+=c;
             }else if(c=='('){
-                stack.push(c);
+                s.push(c);
             }else if(c==')'){
-                while(stack.peek()!='('){
-                    res+=(stack.pop());
+                while(s.peek()!='('){
+                    ans+=(s.pop());
                 }
-                stack.pop();
+                s.pop();
             }else{
-                while(!stack.empty() && prec(stack.peek())>=prec(c)){
-                    res+=(stack.pop());
+                while(!s.isEmpty() && prec(s.peek())>=prec(c)){
+                    ans+=s.pop();
                 }
-                stack.push(c);
+                s.push(c);
             }
         }
-        while(!stack.empty()){
-            res+=(stack.pop());
+        while(!s.isEmpty()){
+            ans+=s.pop();
         }
-        return res;
+        return ans;
     }
 }
