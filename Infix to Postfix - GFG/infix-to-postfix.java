@@ -26,18 +26,18 @@ class Solution {
         else if(c=='+' || c=='-') return 1;
         return -1;
     }
-    public static String infixToPostfix(String str) {
+    public static String infixToPostfix(String exp) {
         // Your code here
         String ans="";
         Stack<Character> s = new Stack<>();
-        for(int i=0;i<str.length();i++){
-            char c = str.charAt(i);
+        for(int i=0;i<exp.length();i++){
+            char c = exp.charAt(i);
             if(Character.isLetterOrDigit(c)){
                 ans+=c;
             }else if(c=='('){
                 s.push(c);
             }else if(c==')'){
-                while(s.peek()!='('){
+                while(!s.isEmpty() && s.peek()!='('){
                     ans+=(s.pop());
                 }
                 s.pop();
