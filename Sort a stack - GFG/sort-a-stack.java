@@ -25,34 +25,27 @@ class SortedStack{
 
 /*Complete the function below*/
 class GfG{
-    public void sortedInsert(Stack<Integer> s,int ele){
-        if(s.empty() || s.peek()<ele){
-            s.push(ele);
+    public void add(Stack<Integer> s,int n){
+        if(s.isEmpty() || s.peek()<=n){
+            s.push(n);
             return;
         }
-        
         int num=s.pop();
-        
-        sortedInsert(s,ele);
-        
+        add(s,n);
         s.push(num);
-        
     }
-    public void srt(Stack<Integer> s){
-        if(s.empty()){
+    public void sort2(Stack<Integer> s){
+        if(s.isEmpty()){
 		    return;
 		}
-		
-		int ele = s.pop();
-		
-		srt(s);
-		
-		sortedInsert(s,ele);
+		int num = s.pop();
+		sort2(s);
+		add(s,num);
     }
 	public Stack<Integer> sort(Stack<Integer> s)
 	{
 		//add code here.
-		srt(s);
+		sort2(s);
 		return s;
 	}
 }
