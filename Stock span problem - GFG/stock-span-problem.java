@@ -43,9 +43,9 @@ class Solution
     public static int[] calculateSpan(int price[], int n)
     {
         // Your code here
+        int ans[] = new int[n];
         Stack<Integer> s = new Stack<>();
         s.push(0);
-        int ans[] = new int[n];
         for(int i=0;i<n;i++){
             while(!s.isEmpty() && price[s.peek()]<=price[i]){
                 s.pop();
