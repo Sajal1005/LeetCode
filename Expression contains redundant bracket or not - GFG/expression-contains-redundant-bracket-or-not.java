@@ -25,22 +25,19 @@ class GFG {
 
 
 class Solution {
-    public static int checkRedundancy(String str) {
+    public static int checkRedundancy(String s) {
         // code here
-        Stack<Character> s = new Stack<>();
-        for(int i=0;i<str.length();i++){
-            if(str.charAt(i)=='(' || str.charAt(i)=='+' || str.charAt(i)=='-' || str.charAt(i)=='/' || str.charAt(i)=='*'){
-                s.push(str.charAt(i));
-            }else if(str.charAt(i)==')'){
-                if(s.peek()=='(') return 1;
-                else{
-                    while(!s.isEmpty() && s.peek()!='('){
-                        s.pop();
-                    }
-                    s.pop();
+        Stack<Character> st = new Stack<>();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='(' || s.charAt(i)=='+' || s.charAt(i)=='/' || s.charAt(i)=='-' || s.charAt(i)=='*'){
+                st.push(s.charAt(i));
+            }else if(s.charAt(i)==')'){
+                if(st.peek()=='(') return 1;
+                while(st.peek()!='('){
+                    st.pop();
                 }
+                st.pop();
             }
-            // System.out.println(s);
         }
         return 0;
     }
