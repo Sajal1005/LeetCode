@@ -68,11 +68,8 @@ class MyStack
     //Function to remove an item from top of the stack.
 	int pop()
 	{
-	    if(top==-1){
-	        return -1;
-	    }
-	    int val=arr[top--];
-	    return val;
         // Your code here
+        if(top==-1) return -1;
+        return arr[top--];
 	}
 }
