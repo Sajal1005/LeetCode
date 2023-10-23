@@ -42,19 +42,19 @@ class GFG {
 
 class Solution
 {
-    //Function to delete middle element of a stack.
-    public void dlt(Stack<Integer>s,int n,int count){
+    public void dlt(Stack<Integer> s,int n,int count){
         if(count==n/2){
             s.pop();
             return;
         }
         int num = s.pop();
-        dlt(s ,n,++count);
+        dlt(s,n,count+1);
         s.push(num);
     }
-    public void deleteMid(Stack<Integer>s,int size){
+    //Function to delete middle element of a stack.
+    public void deleteMid(Stack<Integer>s,int n){
         // code here
-        dlt(s,size,0);
+        dlt(s,n,0);
     } 
 }
 
