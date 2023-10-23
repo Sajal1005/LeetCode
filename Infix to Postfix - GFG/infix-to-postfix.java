@@ -21,36 +21,37 @@ class GFG {
 class Solution {
     // Function to convert an infix expression to a postfix expression.
     public static int prec(char c){
-        if(c=='^') return 3;
-        else if(c=='*' || c=='/') return 2;
-        else if(c=='+' || c=='-') return 1;
+        if(c=='^'){
+            return 3;
+        }else if(c=='*' || c=='/'){
+            return 2;
+        }else if(c=='+' || c=='-'){
+            return 1;
+        }
         return -1;
     }
-    public static String infixToPostfix(String exp) {
+    public static String infixToPostfix(String s) {
         // Your code here
+        Stack<Character> st = new Stack<>();
         String ans="";
-        Stack<Character> s = new Stack<>();
-        for(int i=0;i<exp.length();i++){
-            char c = exp.charAt(i);
-            if(Character.isLetterOrDigit(c)){
-                ans+=c;
-            }else if(c=='('){
-                s.push(c);
-            }else if(c==')'){
-                while(!s.isEmpty() && s.peek()!='('){
-                    ans+=(s.pop());
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='('){
+                st.push(s.charAt(i));
+            }else if(Character.isLetterOrDigit(s.charAt(i))){
+                ans+=s.charAt(i);
+            }else if(s.charAt(i)==')'){
+                while(st.peek()!='('){
+                    ans+=st.pop();
                 }
-                s.pop();
+                st.pop();
             }else{
-                while(!s.isEmpty() && prec(s.peek())>=prec(c)){
-                    ans+=s.pop();
+                while(!st.isEmpty() && prec(st.peek())>=prec(s.charAt(i))){
+                    ans+=st.pop();
                 }
-                s.push(c);
+                st.push(s.charAt(i));
             }
         }
-        while(!s.isEmpty()){
-            ans+=s.pop();
-        }
+        while(!st.isEmpty()) ans+=st.pop();
         return ans;
     }
 }
