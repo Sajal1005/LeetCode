@@ -45,13 +45,13 @@ class GFG
 
 class Solution
 { 
-    public static void add(Stack<Integer> s,int n){
+    public static void insert(Stack<Integer> s,int n){
         if(s.isEmpty()){
             s.push(n);
-            return ;
+            return;
         }
-        int num=s.pop();
-        add(s,n);
+        int num = s.pop();
+        insert(s,n);
         s.push(num);
     }
     static void reverse(Stack<Integer> s)
@@ -62,6 +62,6 @@ class Solution
         }
         int num = s.pop();
         reverse(s);
-        add(s,num);
+        insert(s,num);
     }
 }
