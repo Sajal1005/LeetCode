@@ -64,9 +64,8 @@ class MyStack
     {
         // Add your code here
         if(top==null) return -1;
-        StackNode temp = top;
+        int val=top.data;
         top=top.next;
-        temp.next=null;
-        return temp.data;
+        return val;
     }
 }
