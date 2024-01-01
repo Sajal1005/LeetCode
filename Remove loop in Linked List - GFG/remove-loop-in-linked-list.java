@@ -133,5 +133,6 @@ class Solution
             }
         }
         fast.next=null;
+        
     }
 }
